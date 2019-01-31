@@ -11,6 +11,20 @@
 |
 */
 
+/*
+
+    GET /projects (index)
+
+    POST /projects (store)
+
+    PUT
+
+    PATCH
+
+    DELETE
+
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
