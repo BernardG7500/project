@@ -11,8 +11,7 @@ class ProjectsController extends Controller
     {
         $projects = Project::all();
 
-        // return view('projects.index', ['projects' => $projects]);
-        return view('projects.index', compact('projects'));
+        return view('projects.index' , compact('projects'));
     }
 
     public function create()
@@ -20,20 +19,18 @@ class ProjectsController extends Controller
         return view('projects.create');
     }
 
-    public function show()
+    public function show(Project $project)
     {
+        return view('projects.show', compact('project'));
     }
 
-    public function edit($id) // example.com/projects/1/edit
+    public function edit(Project $project) // example.com/projects/1/edit
     {
-        $project = Project::findOrFail($id);
         return view('projects.edit', compact('project'));
     }
 
-    public function update($id)
+    public function update(Project $project)
     {
-        $project = Project::findOrFail($id);
-
         $project->title = request('title');
         $project->description = request('description');
 
@@ -42,23 +39,30 @@ class ProjectsController extends Controller
         return redirect('/projects');
     }
 
-    public function destroy($id)
+    public function destroy(Project $project)
     {
         //dd('delete ' . $id);
-        Project::findOrFail($id)->delete();
+        //Project::findOrFail($id)->delete();
+        $project->delete();
 
         return redirect('/projects');
     }
 
     public function store()
     {
-        $project = new Project();
+        Project::create([
+            'title' => request('title'),
+            'description' => request('description')
+        ]);
 
-        $project->title = request('title');
-        $project->description = request('description');
 
-        $project->save();
+        // $project = new Project();
 
-        return redirect('/projects');
+        // $project->title = request('title');
+        // $project->description = request('description');
+
+        // $project->save();
+
+        // return redirect('/projects');
     }
 }
