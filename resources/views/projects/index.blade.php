@@ -32,3 +32,10 @@
     </ul>
 
 @endsection
+
+{{--
+
+Sunday afternoon!
+O nee, avond was het. Nadat ik terug ben gekoken van Jaap
+
+--}}
