@@ -8,18 +8,36 @@
         {{ csrf_field() }}
 
         <div class="field">
-            <input type="text" class="input" name="title" placeholder="Project title">
+            <label class="label" for="title">Project Title</label>
+
+            <div class="control">
+                <input type="text" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" name="title" placeholder="Project title">
+            </div>
         </div>
 
         <div class="field">
-            <textarea name="description" class="textarea" placeholder="Project description">
+            <label class="label" for="description">Project Description</label>
 
-            </textarea>
+                <div class="control">
+                    <textarea name="description" class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" placeholder="Project Description"></textarea>
+                </div>
         </div>
 
         <div class="field">
-            <button type="submit" class="button is-link">Create Project</button>
+            <div class="control">
+                <button type="submit" class="button is-link">Create Project</button>
+            </div>
         </div>
+
+        @if ($errors->any())
+            <div class="notification is-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </form>
 
 @endsection
