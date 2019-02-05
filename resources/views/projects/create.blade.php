@@ -11,7 +11,7 @@
             <label class="label" for="title">Project Title</label>
 
             <div class="control">
-                <input type="text" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" name="title" placeholder="Project title">
+                <input type="text" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" name="title" placeholder="Project title" value="{{ old('title') }}">
             </div>
         </div>
 
@@ -19,7 +19,7 @@
             <label class="label" for="description">Project Description</label>
 
                 <div class="control">
-                    <textarea name="description" class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}" placeholder="Project Description"></textarea>
+                    <textarea name="description" placeholder="Project Description" class="textarea {{ $errors->has('description') ? 'is-danger' : '' }}">{{ old('description') }}</textarea>
                 </div>
         </div>
 
