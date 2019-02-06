@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('projects', 'ProjectsController');
+
+Route::patch('/tasks/{task}', 'ProjectTasksController@update');
+
 /*
 
     GET /projects (index)
@@ -34,9 +38,6 @@ Route::get('/', function () {
     PUT
 
 */
-
-
-Route::resource('projects', 'ProjectsController');
 
 // Route::get('/projects', 'ProjectsController@index');
 // Route::get('/projects/create', 'ProjectsController@create');
